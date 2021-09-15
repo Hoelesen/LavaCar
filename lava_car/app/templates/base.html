@@ -1,0 +1,72 @@
+{% load bootstrap5 %}
+{%bootstrap_css%}
+{%bootstrap_javascript%}
+<!DOCTYPE html>
+<html>
+{# Make modifiable head elements #}
+
+<head>
+    <title>{% block title %}Home {% endblock title %} | Lava Car</title>
+    {% block head_favicon %}
+    <link rel="icon" type="image/png" href="{{ STATIC_URL }}images/favicon.ico">
+    {% endblock head_favicon %}
+    {% block head_meta %}
+    {% block head_meta_charset %}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    {% endblock head_meta_charset %}
+    {% block head_meta_contentlanguage %}
+    <meta http-equiv="Content-Language" value="en-US" />
+    {% endblock head_meta_contentlanguage %}
+    {% block head_meta_viewport %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% endblock head_meta_viewport %}
+    {% endblock head_meta %}
+</head>
+
+<body>
+    {# Navigation Menu #}
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Features</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Pricing</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Dropdown link
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    {# The Document Body #}
+    <div id="site-wrapper">
+        {% block content %}
+        if you see this, something is wrong!
+        {% endblock content %}
+    </div>
+</body>
+
+</html>
