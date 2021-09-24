@@ -5,3 +5,6 @@ def index(request):
 
 def novo_servico(request):
     return render(request, 'novo_servico.html')
+
+def servicos_efetuar(request):
+    return render(request, 'servicos_efetuar.html')

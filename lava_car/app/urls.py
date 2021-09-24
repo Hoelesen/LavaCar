@@ -5,4 +5,5 @@ urlpatterns = [
     path('', views.index, name='index'),
     # Aqui criamos as rotas chamando cada view
     path('novo-servico/', views.novo_servico, name='novo_servico'),
+    path('servicos-efetuar/', views.servicos_efetuar, name='servicos_efetuar'),
 ]
