@@ -9,7 +9,7 @@
 <head>
     <title>{% block title %}Home {% endblock title %} | Lava Car</title>
     {% block head_favicon %}
-    <link rel="icon" type="image/png" href="{{ STATIC_URL }}images/favicon.ico">
+    <link rel="icon" type="image/png" href="{{ STATIC_URL }}imagens/favicon.ico">
     {% endblock head_favicon %}
     {% block head_meta %}
     {% block head_meta_charset %}
@@ -22,7 +22,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% endblock head_meta_viewport %}
     {% endblock head_meta %}
-    <link rel="stylesheet"href="{% static 'css/stylesheet.css' %}"
+    <link rel="stylesheet"href="{% static 'css/stylesheet.css' %}">
     <script src="{% static 'fontawesome_free/js/all.min.js' %}"></script>
     <link href="{% static 'fontawesome_free/css/all.min.css' %}" rel="stylesheet" type="text/css">
 </head>
@@ -32,7 +32,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Inicio</a>
+                <a class="navbar-brand" href="/">Inicio</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -71,7 +71,7 @@
                             <a class="nav-link" href="#">Cadastros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Sair</a>
+                            <a class="nav-link" href="/accounts/logout">Sair</a>
                         </li>
 
                     </ul>
