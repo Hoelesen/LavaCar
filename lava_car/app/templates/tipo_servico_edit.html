@@ -1,11 +1,32 @@
 {% extends 'base.html' %}
-{% block title %}Tipo de serviço - criar{% endblock title %}
+{% block title %}Tipo de serviço - Editar{% endblock title %}
 {% block nav-style %}mkt-nav{% endblock nav-style %}
 {% block content %}
 
+{% load bootstrap5 %}
+
 <div>
-    {% block bootstrap_form form %}
-    {% endblock bootstrap_form %}
+    <div class="container">
+    <div class="row">
+        <div class="col my-3">
+            <div class="card">
+                <div class="card-body">
+                    <form method="POST">
+                        <!-- Security token -->
+                        {% csrf_token %}
+                        <!-- Using the formset -->
+                        {% bootstrap_form form %}
+                        <div class="d-flex justify-content-end">
+                            <a href={% url 'tipo_servico_list' %}  class="btn btn-secondary">Voltar</a>
+                            <button style="margin-left: 9px;" type="submit" class="btn btn-success">Salvar</button>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 
 {% endblock content %}

@@ -39,40 +39,48 @@ class ServicoStatus(IntEnum):
 # Create your models here.
 class Cliente(models.Model):    
     nome = models.CharField(max_length=60)
-    cpf_ou_cnpj = models.CharField(max_length=14)
-    nome_fantasia = models.CharField(max_length=60)
+    cpf_ou_cnpj = models.CharField(max_length=14, verbose_name="CPF/CNPJ")
+    nome_fantasia = models.CharField(max_length=60, verbose_name="Nome fantasia")
     telefone = models.CharField(max_length=14)
-    email = models.CharField(max_length=60)
+    email = models.CharField(max_length=60, verbose_name="E-mail")
+    cep = models.CharField(max_length=9, verbose_name="CEP")
     logradouro = models.CharField(max_length=60)
-    numero = models.IntegerField()
+    numero = models.IntegerField(verbose_name="Número")
     complemento = models.CharField(max_length=60)
     bairro = models.CharField(max_length=60)
-    cep = models.CharField(max_length=9)
     cidade = models.CharField(max_length=60)
-    uf = models.CharField(max_length=2)
+    uf = models.CharField(max_length=2, verbose_name="UF")
+
+    def __str__(self) -> str:
+        return self.nome
     
 class Veiculo(models.Model):
-    tipo_veiculo = models.IntegerField(choices=TipoVeiculo.choices(), default=TipoVeiculo.CARRO)
+    tipo_veiculo = models.IntegerField(choices=TipoVeiculo.choices(), default=TipoVeiculo.CARRO, verbose_name="Tipo")
     placa = models.CharField(max_length=7)
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-    descricao = models.CharField(max_length=50)
+    descricao = models.CharField(max_length=50, verbose_name="Descrição")
+
+    def __str__(self) -> str:
+        return self.placa
     
 class TipoServico(models.Model):
     nome = models.CharField(max_length=60)
-    descricao = models.CharField(max_length=60)
+    descricao = models.CharField(max_length=60, verbose_name="Descrição")
     valor = models.DecimalField(decimal_places=2, max_digits=4)
-    forma_pagamento = models.IntegerField(choices=FormaPagamento.choices())
-    tipo_veiculo = models.IntegerField(choices=TipoVeiculo.choices(), default=TipoVeiculo.CARRO)
-
-class ServicoItem(models.Model):
-    tipo_servico = models.ForeignKey(TipoServico, on_delete=models.RESTRICT)
+    tipo_veiculo = models.IntegerField(choices=TipoVeiculo.choices(), default=TipoVeiculo.CARRO, verbose_name="Tipo")
+    
+    def __str__(self) -> str:
+        return self.nome + ' - ' + str(self.valor) 
 
 class Servico(models.Model):
-    data_entrada = models.DateTimeField()
-    data_saida = models.DateTimeField()
-    numero_nota = models.CharField(max_length=60)
-    codigo_verificacao = models.CharField(max_length=60)
-    desconto = models.DecimalField(decimal_places=2, max_digits=4)
+    veiculo = models.ForeignKey(Veiculo, on_delete=models.RESTRICT, verbose_name="Veículo")
+    data_entrada = models.DateTimeField(verbose_name="Entrada")
+    data_saida = models.DateTimeField(verbose_name="Saída")
+    numero_nota = models.CharField(max_length=60, verbose_name="N° da nota")
+    codigo_verificacao = models.CharField(max_length=60, verbose_name="Código de verificação")
+    desconto = models.DecimalField(decimal_places=2, max_digits=4, verbose_name="Desconto")
+    forma_pagamento = models.IntegerField(choices=FormaPagamento.choices(), verbose_name="Forma de pagamento")
     status = models.IntegerField(choices=ServicoStatus.choices(), default=ServicoStatus.AGUARDANDO_LAVAGEM)
-    itens = models.ManyToManyField(ServicoItem)
+    observacao = models.CharField(max_length=60, verbose_name="Observação")
+    itens = models.ManyToManyField(TipoServico)
 

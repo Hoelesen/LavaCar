@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Tipo de serviço - criar{% endblock title %}
+{% block title %}Veículo - criar{% endblock title %}
 {% block nav-style %}mkt-nav{% endblock nav-style %}
 {% block content %}
 
@@ -16,7 +16,7 @@
                         <!-- Using the formset -->
                         {% bootstrap_form form %}
                         <div class="d-flex justify-content-end">
-                            <a href={% url 'tipo_servico_list' %}  class="btn btn-secondary">Voltar</a>
+                            <a href={% url 'veiculo_list' %}  class="btn btn-secondary">Voltar</a>
                             <button style="margin-left: 9px;" type="submit" class="btn btn-success">Salvar</button>
                         </div>
                         

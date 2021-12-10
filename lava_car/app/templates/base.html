@@ -22,7 +22,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% endblock head_meta_viewport %}
     {% endblock head_meta %}
-    <link rel="stylesheet"href="{% static 'css/stylesheet.css' %}">
+    <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
     <script src="{% static 'fontawesome_free/js/all.min.js' %}"></script>
     <link href="{% static 'fontawesome_free/css/all.min.css' %}" rel="stylesheet" type="text/css">
 </head>
@@ -48,27 +48,42 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <li><a class="dropdown-item" href="#">Adicionar Serviços</a></li>
                                 <li><a class="dropdown-item" href="#">Serviços em Andamento</a></li>
+                                <li>
+                                    <a class="dropdown-item" href={% url 'servico_list' %}>Todos os serviços</a>
+                                </li>
                             </ul>
                         </li>
-                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                            <ul class="navbar-nav">
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        Financeiro
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <li><a class="dropdown-item" href="#">Entrada e Saidas</a></li>
-                                        <li><a class="dropdown-item" href="#">Agendamentos</a></li>
-                                        
-                                    </ul>
-                                </li>
-                       
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Financeiro
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="#">Entrada e Saidas</a></li>
+                                <li><a class="dropdown-item" href="#">Agendamentos</a></li>
+
+                            </ul>
+                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="#">Relatórios</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Cadastros</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCadastros" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Cadastros
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownCadastros">
+                                <li>
+                                    <a class="dropdown-item" href={% url 'tipo_servico_list' %}>Tipo de serviço</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href={% url 'cliente_list' %}>Cliente</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href={% url 'veiculo_list' %}>Veículo</a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/accounts/logout">Sair</a>

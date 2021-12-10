@@ -81,15 +81,49 @@
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Status do Serviço
+                                                    </h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                                 </div>
+                                                <!--######################### MODAL ###############################-->
                                                 <div class="modal-body">
 
-                                                    <H1>aqui quero montar as buscas da Modal</H1>
-
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="exampleRadios" id="exampleRadios1" value="option1">
+                                                        <label class="form-check-label" for="exampleRadios1">
+                                                            <p class=""><i class="fa fa-circle fa-fw text-success"
+                                                                    aria-hidden="true"></i> Finalizado </p>
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="exampleRadios" id="exampleRadios2" value="option2">
+                                                        <label class="form-check-label" for="exampleRadios2">
+                                                            <p class=""><i class="fa fa-circle fa-fw text-info"
+                                                                    aria-hidden="true"></i> Andamento</p>
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="exampleRadios" id="exampleRadios3" value="option3">
+                                                        <label class="form-check-label" for="exampleRadios3">
+                                                            <p class=""><i class="fa fa-circle fa-fw text-warning"
+                                                                    aria-hidden="true"></i> Serviços pendentes</p>
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="exampleRadios" id="exampleRadios3" value="option3">
+                                                        <label class="form-check-label" for="exampleRadios3">
+                                                            <p class=""><i class="fa fa-circle fa-fw text-danger"
+                                                                    aria-hidden="true"></i> aguardando Inicio.</p>
+                                                        </label>
+                                                    </div>
                                                 </div>
+
+                                                <!--######################### MODAL ###############################-->
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">Close</button>
@@ -98,425 +132,81 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- <i class="fas fa-edit"></i> -->
-                                    <!-- Modal Editar -->
+
                                 </a>
                             </td>
+                            <!-- MOdal 2-->
                             <td class="text-center">
-                                <a href="">
-                                    <i class="text-primary fas fa-check-circle"></i>
-                                    <div class="input-field col s12">
-                                        <select>
-                                            <option value="" disabled selected></option>
-                                            <option value="1">Option 1</option>
-                                            <option value="2">Option 2</option>
-                                            <option value="3">Option 3</option>
-                                        </select>
-                                        <label></label>
+
+                                <a href="#" onclick="editar()">
+
+                                    <button type="button" class="text-primary fas fa-check-circle"
+                                        data-bs-toggle="modal" data-bs-target="#modal2">
+
+                                    </button>
+
+                                    <div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="modal2"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="modal2">Status do Serviço
+                                                    </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+
+                                                <div class="modal-body d-flex flex-column justify-content-end">
+
+
+
+                                                    <div class="form-check">
+                                                        <input type="radio" class="btn-check" name="options-outlined"
+                                                            id="success-outlined" autocomplete="off" >
+                                                        <label class="btn btn-outline-success"
+                                                            for="success-outlined">Finalizado </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input type="radio" class="btn-check" name="options-outlined"
+                                                            id="success-outlined" autocomplete="off" >
+                                                        <label class="btn btn-outline-info"
+                                                            for="info-outlined">Andamento</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input type="radio" class="btn-check" name="options-outlined"
+                                                            id="success-outlined" autocomplete="off" >
+                                                        <label class="btn btn-outline-warning"
+                                                            for="warning-outlined">Serviços pendentes</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input type="radio" class="btn-check" name="options-outlined"
+                                                            id="success-outlined" autocomplete="off" >
+                                                        <label class="btn btn-outline-danger"
+                                                            for="success-danger">aguardando Inicio</label>
+                                                    </div>
+
+
+                                                </div>
+
+
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="input-field col s12 m6">
-                                        <select class="icons">
-                                            <option value="" disabled selected>Choose your option</option>
-                                            <option value="" data-icon="">example 1</option>
-                                            <option value="" data-icon="../static/imagens/login.jpg">example 2</option>
-                                            <option value="" data-icon="images/yuna.jpg">example 3</option>
-                                        </select>
-                                        <label>Images in select</label>
-                                    </div>
+
                                 </a>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="text-center">1</td>
-                            <td>José</td>
-                            <td>Gol G5</td>
-                            <td class="text-center">08:05</td>
-                            <td class="text-center">10:25</td>
-                            <td class="text-center">
-                                <a href="#" onclick="editar()">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <a href="">
-                                    <i class="text-primary fas fa-check-circle"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">1</td>
-                            <td>José</td>
-                            <td>Gol G5</td>
-                            <td class="text-center">08:05</td>
-                            <td class="text-center">10:25</td>
-                            <td class="text-center">
-                                <a href="#" onclick="editar()">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <a href="">
-                                    <i class="text-primary fas fa-check-circle"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">1</td>
-                            <td>José</td>
-                            <td>Gol G5</td>
-                            <td class="text-center">08:05</td>
-                            <td class="text-center">10:25</td>
-                            <td class="text-center">
-                                <a href="#" onclick="editar()">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <a href="">
-                                    <i class="text-primary fas fa-check-circle"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">1</td>
-                            <td>José</td>
-                            <td>Gol G5</td>
-                            <td class="text-center">08:05</td>
-                            <td class="text-center">10:25</td>
-                            <td class="text-center">
-                                <a href="#" onclick="editar()">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <a href="">
-                                    <i class="text-primary fas fa-check-circle"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">1</td>
-                            <td>José</td>
-                            <td>Gol G5</td>
-                            <td class="text-center">08:05</td>
-                            <td class="text-center">10:25</td>
-                            <td class="text-center">
-                                <a href="#" onclick="editar()">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <a href="">
-                                    <i class="text-primary fas fa-check-circle"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">1</td>
-                            <td>José</td>
-                            <td>Gol G5</td>
-                            <td class="text-center">08:05</td>
-                            <td class="text-center">10:25</td>
-                            <td class="text-center">
-                                <a href="#" onclick="editar()">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <a href="">
-                                    <i class="text-primary fas fa-check-circle"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">1</td>
-                            <td>José</td>
-                            <td>Gol G5</td>
-                            <td class="text-center">08:05</td>
-                            <td class="text-center">10:25</td>
-                            <td class="text-center">
-                                <a href="#" onclick="editar()">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <a href="">
-                                    <i class="text-primary fas fa-check-circle"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">1</td>
-                            <td>José</td>
-                            <td>Gol G5</td>
-                            <td class="text-center">08:05</td>
-                            <td class="text-center">10:25</td>
-                            <td class="text-center">
-                                <a href="#" onclick="editar()">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <a href="">
-                                    <i class="text-primary fas fa-check-circle"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">1</td>
-                            <td>José</td>
-                            <td>Gol G5</td>
-                            <td class="text-center">08:05</td>
-                            <td class="text-center">10:25</td>
-                            <td class="text-center">
-                                <a href="#" onclick="editar()">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <a href="">
-                                    <i class="text-primary fas fa-check-circle"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">1</td>
-                            <td>José</td>
-                            <td>Gol G5</td>
-                            <td class="text-center">08:05</td>
-                            <td class="text-center">10:25</td>
-                            <td class="text-center">
-                                <a href="#" onclick="editar()">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <a href="">
-                                    <i class="text-primary fas fa-check-circle"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">1</td>
-                            <td>José</td>
-                            <td>Gol G5</td>
-                            <td class="text-center">08:05</td>
-                            <td class="text-center">10:25</td>
-                            <td class="text-center">
-                                <a href="#" onclick="editar()">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <a href="">
-                                    <i class="text-primary fas fa-check-circle"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">1</td>
-                            <td>José</td>
-                            <td>Gol G5</td>
-                            <td class="text-center">08:05</td>
-                            <td class="text-center">10:25</td>
-                            <td class="text-center">
-                                <a href="#" onclick="editar()">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <a href="">
-                                    <i class="text-primary fas fa-check-circle"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">1</td>
-                            <td>José</td>
-                            <td>Gol G5</td>
-                            <td class="text-center">08:05</td>
-                            <td class="text-center">10:25</td>
-                            <td class="text-center">
-                                <a href="#" onclick="editar()">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <a href="">
-                                    <i class="text-primary fas fa-check-circle"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">1</td>
-                            <td>José</td>
-                            <td>Gol G5</td>
-                            <td class="text-center">08:05</td>
-                            <td class="text-center">10:25</td>
-                            <td class="text-center">
-                                <a href="#" onclick="editar()">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <a href="">
-                                    <i class="text-primary fas fa-check-circle"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">1</td>
-                            <td>José</td>
-                            <td>Gol G5</td>
-                            <td class="text-center">08:05</td>
-                            <td class="text-center">10:25</td>
-                            <td class="text-center">
-                                <a href="#" onclick="editar()">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <a href="">
-                                    <i class="text-primary fas fa-check-circle"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">1</td>
-                            <td>José</td>
-                            <td>Gol G5</td>
-                            <td class="text-center">08:05</td>
-                            <td class="text-center">10:25</td>
-                            <td class="text-center">
-                                <a href="#" onclick="editar()">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <a href="">
-                                    <i class="text-primary fas fa-check-circle"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">1</td>
-                            <td>José</td>
-                            <td>Gol G5</td>
-                            <td class="text-center">08:05</td>
-                            <td class="text-center">10:25</td>
-                            <td class="text-center">
-                                <a href="#" onclick="editar()">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <a href="">
-                                    <i class="text-primary fas fa-check-circle"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">1</td>
-                            <td>José</td>
-                            <td>Gol G5</td>
-                            <td class="text-center">08:05</td>
-                            <td class="text-center">10:25</td>
-                            <td class="text-center">
-                                <a href="#" onclick="editar()">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <a href="">
-                                    <i class="text-primary fas fa-check-circle"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">1</td>
-                            <td>José</td>
-                            <td>Gol G5</td>
-                            <td class="text-center">08:05</td>
-                            <td class="text-center">10:25</td>
-                            <td class="text-center">
-                                <a href="#" onclick="editar()">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <a href="">
-                                    <i class="text-primary fas fa-check-circle"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">1</td>
-                            <td>José</td>
-                            <td>Gol G5</td>
-                            <td class="text-center">08:05</td>
-                            <td class="text-center">10:25</td>
-                            <td class="text-center">
-                                <a href="#" onclick="editar()">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <a href="">
-                                    <i class="text-primary fas fa-check-circle"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">1</td>
-                            <td>José</td>
-                            <td>Gol G5</td>
-                            <td class="text-center">08:05</td>
-                            <td class="text-center">10:25</td>
-                            <td class="text-center">
-                                <a href="#" onclick="editar()">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <a href="">
-                                    <i class="text-primary fas fa-check-circle"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">1</td>
-                            <td>José</td>
-                            <td>Gol G5</td>
-                            <td class="text-center">08:05</td>
-                            <td class="text-center">10:25</td>
-                            <td class="text-center">
-                                <a href="#" onclick="editar()">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <a href="">
-                                    <i class="text-primary fas fa-check-circle"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">1</td>
-                            <td>José</td>
-                            <td>Gol G5</td>
-                            <td class="text-center">08:05</td>
-                            <td class="text-center">10:25</td>
-                            <td class="text-center">
-                                <a href="#" onclick="editar()">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <a href="">
-                                    <i class="text-primary fas fa-check-circle"></i>
-                                </a>
-                            </td>
-                        </tr>
+
+
+
+
+
+
                     </tbody>
                     </table>
                 </div>
