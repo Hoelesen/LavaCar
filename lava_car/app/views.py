@@ -37,6 +37,8 @@ def servico_create(request):
     # create object of form
     form = ServicoForm(request.POST or None)
 
+    tipos = request.POST.getlist("itens")
+
     # check if form data is valid
     if form.is_valid():
         # save the form data to model

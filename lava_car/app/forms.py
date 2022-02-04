@@ -1,4 +1,22 @@
 from django import forms
+
+# Personalizando input datetime
+class DateTimeLocalInput(forms.DateTimeInput):
+    input_type = "datetime-local"
+ 
+class DateTimeLocalField(forms.DateTimeField):
+    # Set DATETIME_INPUT_FORMATS here because, if USE_L10N 
+    # is True, the locale-dictated format will be applied 
+    # instead of settings.DATETIME_INPUT_FORMATS.
+    # See also: 
+    # https://developer.mozilla.org/en-US/docs/Web/HTML/Date_and_time_formats
+     
+    input_formats = [
+        "%Y-%m-%dT%H:%M:%S", 
+        "%Y-%m-%dT%H:%M:%S.%f", 
+        "%Y-%m-%dT%H:%M"
+    ]
+    widget = DateTimeLocalInput(format="%Y-%m-%dT%H:%M")
   
 # import GeeksModel from models.py
 from .models import Cliente, Servico, TipoServico, Veiculo
@@ -33,8 +51,11 @@ class ServicoForm(forms.ModelForm):
         model = Servico
         fields = "__all__"
     veiculo = forms.ModelChoiceField(queryset=Veiculo.objects.all(), to_field_name="id", empty_label="Selecione")
-    data_entrada = forms.CharField(widget=forms.DateInput)
-    data_saida = forms.CharField(widget=forms.DateInput)
-    # itens = forms.MultiValueField()
+    data_entrada = DateTimeLocalField()
+    data_saida = DateTimeLocalField()
+    itens = forms.ModelMultipleChoiceField(
+        queryset=TipoServico.objects.all(),
+        widget=forms.CheckboxSelectMultiple
+    )
   
     
