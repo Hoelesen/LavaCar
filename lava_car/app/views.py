@@ -1,3 +1,4 @@
+from datetime import datetime, timedelta
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.contrib.auth.decorators import login_required
@@ -10,7 +11,13 @@ from app.models import Cliente, TipoServico, Veiculo, Servico
 
 @login_required
 def index(request):
-    return render(request, 'home.html')
+    # dictionary for initial data with
+    # field names as keys
+    context = {}
+
+    date_from = datetime.now() - timedelta(days=3)
+    context["servicos"] = Servico.objects.filter(data_entrada__gte=date_from).all()
+    return render(request, 'home.html',context)
 
 # Login
 

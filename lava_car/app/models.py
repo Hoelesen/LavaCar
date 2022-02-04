@@ -76,13 +76,13 @@ class TipoServico(models.Model):
 
 class Servico(models.Model):
     veiculo = models.ForeignKey(Veiculo, on_delete=models.RESTRICT, verbose_name="Veículo")
-    data_entrada = models.DateTimeField(verbose_name="Entrada")
-    data_saida = models.DateTimeField(verbose_name="Saída")
+    data_entrada = models.DateTimeField(verbose_name="Data/Hora entrada")
+    data_saida = models.DateTimeField(verbose_name="Data/Hora saída")
     numero_nota = models.CharField(max_length=60, verbose_name="N° da nota", blank=True, default='')
     codigo_verificacao = models.CharField(max_length=60, verbose_name="Código de verificação", blank=True, default='')
     desconto = models.DecimalField(decimal_places=2, max_digits=4, verbose_name="Desconto", default=0)
     forma_pagamento = models.IntegerField(choices=FormaPagamento.choices(), verbose_name="Forma de pagamento")
     status = models.IntegerField(choices=ServicoStatus.choices(), default=ServicoStatus.AGUARDANDO_LAVAGEM)
     observacao = models.CharField(max_length=60, verbose_name="Observação", blank=True, default='')
-    itens = models.ManyToManyField(TipoServico)
+    itens = models.ManyToManyField(TipoServico, db_column="")
 
