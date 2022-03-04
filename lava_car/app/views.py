@@ -1,10 +1,11 @@
 from datetime import datetime, timedelta
+from urllib.parse import parse_qs, urlparse
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.contrib.auth.decorators import login_required
 
 from app.forms import ClienteForm, ServicoForm, TipoServicoForm, VeiculoForm
-from app.models import Cliente, TipoServico, Veiculo, Servico
+from app.models import Cliente, TipoServico, Veiculo, Servico, FormaPagamento, ServicoStatus
 
 # Home
 
@@ -32,8 +33,35 @@ def servico_list(request):
     # field names as keys
     context = {}
 
+    status = request.GET.get("status")
+    andamento = request.GET.get("andamento")
+    data_inicial_request = request.GET.get("dataInicial")
+    data_final_request = request.GET.get("dataFinal")
+
     # add the dictionary during initialization
-    context["dataset"] = Servico.objects.all()
+    queryset = Servico.objects.all()
+    
+    if andamento == 'true':
+        andamento = True if 'true' else False
+        if andamento:
+            queryset = queryset.filter(status__lt=5)
+        else:
+            queryset = queryset.filter(status__gt=4)
+            
+    if status != None and status != '':
+        queryset = queryset.filter(status=status)
+    if (data_inicial_request is not None and data_inicial_request != '') and (data_final_request is not None and data_final_request != ''):
+        data_inicial = datetime.strptime(data_inicial_request, '%Y-%m-%d')
+        data_final = datetime.strptime(data_final_request, '%Y-%m-%d')
+
+        queryset = queryset.filter(data_entrada__gt=data_inicial).filter(data_entrada__lt=data_final)
+
+    context["dataset"] = queryset    
+    context["status_list"] = ServicoStatus.choices()    
+
+    context["status"] = status    
+    context["data_inicial"] = data_inicial_request    
+    context["data_final"] = data_final_request    
 
     return render(request, "servico_list.html", context)
 

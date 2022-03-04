@@ -86,3 +86,32 @@ class Servico(models.Model):
     observacao = models.CharField(max_length=60, verbose_name="Observação", blank=True, default='')
     itens = models.ManyToManyField(TipoServico, db_column="")
 
+    def get_forma_pagamento_label(self):
+      if self.forma_pagamento == FormaPagamento.APRAZO:
+          return "À prazo"
+      if self.forma_pagamento == FormaPagamento.AVISTA:
+          return "À vista"
+      if self.forma_pagamento == FormaPagamento.CARTAO_CREDITO:
+          return "Cartão de crédito"
+      if self.forma_pagamento == FormaPagamento.CARTAO_DEBITO:
+          return "Cartão de débito"
+      if self.forma_pagamento == FormaPagamento.GESTOR_FROTAS:
+          return "Gestor de frotas"
+      if self.forma_pagamento == FormaPagamento.PIX:
+          return "PIX"
+
+    def get_status_label(self):
+      if self.status == ServicoStatus.AGUARDANDO_LAVAGEM:
+          return "Aguardando lavagem"
+      if self.status == ServicoStatus.AGUARDANDO_LIMPEZA:
+          return "Aguardando limpeza"
+      if self.status == ServicoStatus.LAVAGEM_ANDAMENTO:
+          return "Lavagem em andamento"
+      if self.status == ServicoStatus.LIMPEZA_ANDAMENTO:
+          return "Limpeza em andamento"
+      if self.status == ServicoStatus.ENTREGUE:
+          return "Entregue"
+      if self.status == ServicoStatus.FINALIZADO:
+          return "Finalizado"
+              
+
