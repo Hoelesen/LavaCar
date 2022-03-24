@@ -28,5 +28,7 @@ urlpatterns = [
     path('servicos/create/', views.servico_create, name='servico_create'),
     path('servicos/edit/<id>', views.servico_edit, name='servico_edit'),
     path('servicos/delete/<id>', views.servico_delete, name='servico_delete'),
-    path('servicos/', views.servico_list, name='servico_list')
+    path('servicos/', views.servico_list, name='servico_list'),
+    # Acertos
+    path('servicos/<servico_id>/acertos/create/', views.acerto_create, name='acerto_create')
 ]

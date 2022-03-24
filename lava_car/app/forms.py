@@ -19,7 +19,7 @@ class DateTimeLocalField(forms.DateTimeField):
     widget = DateTimeLocalInput(format="%Y-%m-%dT%H:%M")
   
 # import GeeksModel from models.py
-from .models import Cliente, Servico, TipoServico, Veiculo
+from .models import Acerto, Cliente, Funcionario, Servico, TipoServico, Veiculo
   
 # create a ModelForm
 class TipoServicoForm(forms.ModelForm):
@@ -57,5 +57,14 @@ class ServicoForm(forms.ModelForm):
         queryset=TipoServico.objects.all(),
         widget=forms.CheckboxSelectMultiple
     )
+
+class AcertoForm(forms.ModelForm):
+    # specify the name of model to use
+    class Meta:
+        model = Acerto
+        fields = "__all__"
+    servico = forms.ModelChoiceField(queryset=Servico.objects.all(), to_field_name="id", empty_label="Selecione", widget=forms.HiddenInput())
+    funcionario = forms.ModelChoiceField(queryset=Funcionario.objects.all(), to_field_name="id", empty_label="Selecione")
+    observacao = forms.Textarea()
   
     

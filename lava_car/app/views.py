@@ -1,11 +1,12 @@
 from datetime import datetime, timedelta
+from decimal import Decimal
 from urllib.parse import parse_qs, urlparse
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.contrib.auth.decorators import login_required
 
-from app.forms import ClienteForm, ServicoForm, TipoServicoForm, VeiculoForm
-from app.models import Cliente, TipoServico, Veiculo, Servico, FormaPagamento, ServicoStatus
+from app.forms import ClienteForm, ServicoForm, TipoServicoForm, VeiculoForm, AcertoForm
+from app.models import Cliente, TipoServico, Veiculo, Servico, ServicoStatus, Acerto
 
 # Home
 
@@ -113,6 +114,38 @@ def servico_delete(_, id):
 
     obj.delete()
     return HttpResponseRedirect("/servicos")
+
+def acerto_create(request, servico_id):
+    # dictionary for initial data with
+    # field names as keys
+    context = {}
+
+    # fetch the object related to passed id
+    servico_existente = get_object_or_404(Servico, id=servico_id)
+    acertos_ja_feitos = Acerto.objects.filter(servico_id = servico_id)
+    context["valor_total"] = sum(item.valor for item in servico_existente.itens.all())
+    context["valor_ja_acertado"] = sum(item.valor for item in acertos_ja_feitos.all())
+
+    obj = Acerto()
+
+    obj.servico = servico_existente
+    obj.valor = context["valor_total"] - context["valor_ja_acertado"]
+    obj.valor_comissao = round(obj.valor * Decimal(0.1), 2)
+
+    # pass the object as instance in form
+    form = AcertoForm(request.POST or None, instance=obj)
+
+    # save the data from the form and
+    # redirect to detail_view
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+    # add form dictionary to context
+    context["form"] = form
+    
+
+    return render(request, "acerto_create.html", context)
 
 # CLIENTES
 def cliente_list(request):

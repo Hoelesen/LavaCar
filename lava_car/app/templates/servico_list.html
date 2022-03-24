@@ -68,10 +68,15 @@
                             <td>{{ data.get_status_label }}</td>
                             <td>
                                 <div class="d-flex justify-content-center">
-                                    <a style="margin-right: 12px;" href={% url 'servico_edit' id=data.id %}><i
-                                            class="fas fa-pencil-alt"></i></a>
-                                    <a href={% url 'servico_delete' id=data.id %}><i
-                                            class="fas fa-trash text-danger"></i></a>
+                                    <a style="margin-right: 12px;" href={% url 'servico_edit' id=data.id %}>
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </a>
+                                    <a style="margin-right: 12px;" href={% url 'acerto_create' servico_id=data.id %}>
+                                        <i class="fas fa-money-bill text-success"></i>
+                                    </a>
+                                    <a href={% url 'servico_delete' id=data.id %}>
+                                        <i class="fas fa-trash text-danger"></i>
+                                    </a>
                                 </div>
                             </td>
                         </tr>
