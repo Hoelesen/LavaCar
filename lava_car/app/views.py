@@ -57,7 +57,7 @@ def servico_list(request):
 
         queryset = queryset.filter(data_entrada__gt=data_inicial).filter(data_entrada__lt=data_final)
 
-    context["dataset"] = queryset    
+    context["dataset"] = list(queryset)
     context["status_list"] = ServicoStatus.choices()    
 
     context["status"] = status    
@@ -123,13 +123,13 @@ def acerto_create(request, servico_id):
     # fetch the object related to passed id
     servico_existente = get_object_or_404(Servico, id=servico_id)
     acertos_ja_feitos = Acerto.objects.filter(servico_id = servico_id)
-    context["valor_total"] = sum(item.valor for item in servico_existente.itens.all())
-    context["valor_ja_acertado"] = sum(item.valor for item in acertos_ja_feitos.all())
+    context["valor_total"] = servico_existente.get_total_itens_com_desconto()
+    context["valor_ja_acertado"] = servico_existente.get_total_acertado()
 
     obj = Acerto()
 
     obj.servico = servico_existente
-    obj.valor = context["valor_total"] - context["valor_ja_acertado"]
+    obj.valor = servico_existente.get_valor_restante()
     obj.valor_comissao = round(obj.valor * Decimal(0.1), 2)
 
     # pass the object as instance in form

@@ -110,20 +110,9 @@ class Servico(models.Model):
         max_length=60, verbose_name="Observação", blank=True, default='')
     itens = models.ManyToManyField(TipoServico, db_column="")
     pago = models.BooleanField(verbose_name="Pago", default=False)
+    desconto = models.DecimalField(
+        decimal_places=2, max_digits=4, verbose_name="Desconto", default=0)
 
-    def get_forma_pagamento_label(self):
-        if self.forma_pagamento == FormaPagamento.APRAZO:
-            return "À prazo"
-        if self.forma_pagamento == FormaPagamento.AVISTA:
-            return "À vista"
-        if self.forma_pagamento == FormaPagamento.CARTAO_CREDITO:
-            return "Cartão de crédito"
-        if self.forma_pagamento == FormaPagamento.CARTAO_DEBITO:
-            return "Cartão de débito"
-        if self.forma_pagamento == FormaPagamento.GESTOR_FROTAS:
-            return "Gestor de frotas"
-        if self.forma_pagamento == FormaPagamento.PIX:
-            return "PIX"
 
     def get_status_label(self):
         if self.status == ServicoStatus.AGUARDANDO_LAVAGEM:
@@ -139,6 +128,23 @@ class Servico(models.Model):
         if self.status == ServicoStatus.FINALIZADO:
             return "Finalizado"
 
+    def get_total_acertado(self):
+        acerto_total = sum(acerto.valor for acerto in self.acerto_set.all())
+        return round(acerto_total, 2)
+
+    def get_total_itens(self):
+        itens_total = sum(item.valor for item in self.itens.all())
+        return round(itens_total, 2)
+
+    def get_total_itens_com_desconto(self):
+        itens_total = self.get_total_itens()
+        return round(itens_total * (1 - (self.desconto / 100)), 2)
+
+    def get_valor_restante(self):
+        total_itens = self.get_total_itens_com_desconto()
+        total_acertado = self.get_total_acertado()
+        return round(total_itens - total_acertado, 2)
+
 
 class Acerto(models.Model):
     servico = models.ForeignKey(
@@ -151,7 +157,19 @@ class Acerto(models.Model):
         Funcionario, on_delete=models.RESTRICT, verbose_name="Funcionario")
     observacao = models.CharField(
         max_length=100, verbose_name="Observação", blank=True, default='')
-    desconto = models.DecimalField(
-        decimal_places=2, max_digits=4, verbose_name="Desconto", default=0)
     forma_pagamento = models.IntegerField(
         choices=FormaPagamento.choices(), verbose_name="Forma de pagamento")
+    
+    def get_forma_pagamento_label(self):
+        if self.forma_pagamento == FormaPagamento.APRAZO:
+            return "À prazo"
+        if self.forma_pagamento == FormaPagamento.AVISTA:
+            return "À vista"
+        if self.forma_pagamento == FormaPagamento.CARTAO_CREDITO:
+            return "Cartão de crédito"
+        if self.forma_pagamento == FormaPagamento.CARTAO_DEBITO:
+            return "Cartão de débito"
+        if self.forma_pagamento == FormaPagamento.GESTOR_FROTAS:
+            return "Gestor de frotas"
+        if self.forma_pagamento == FormaPagamento.PIX:
+            return "PIX"

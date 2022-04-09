@@ -37,6 +37,14 @@
             </div>
         </div>
     </div>
+    <script>
+        var elValorComissao = document.getElementsByName("valor_comissao")[0]
+        var elValor = document.getElementsByName("valor")[0]
+
+        elValor.addEventListener('blur', e => {
+            elValorComissao.value = parseFloat(e.target.value) / 10
+        })
+    </script>
 </div>
 
 {% endblock content %}
