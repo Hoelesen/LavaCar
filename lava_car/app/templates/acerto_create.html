@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}Acerto - {{ servico.id }} - criar{% endblock title %}
+{% block nav-style %}mkt-nav{% endblock nav-style %}
+{% block content %}
+
+{% load bootstrap5 %}
+
+<div class="container">
+    <div class="row">
+        <div class="col my-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-group">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5>Valor total R${{valor_total}}</h5>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5>Valor já acertado: R${{valor_ja_acertado}}</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <form method="POST">
+                        <!-- Security token -->
+                        {% csrf_token %}
+                        <!-- Using the formset -->
+                        {% bootstrap_form form %}
+                        <div class="d-flex justify-content-end">
+                            <a href={% url 'servico_list' %}  class="btn btn-secondary">Voltar</a>
+                            <button style="margin-left: 9px;" type="submit" class="btn btn-success">Salvar</button>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var elValorComissao = document.getElementsByName("valor_comissao")[0]
+        var elValor = document.getElementsByName("valor")[0]
+
+        elValor.addEventListener('blur', e => {
+            elValorComissao.value = parseFloat(e.target.value) / 10
+        })
+    </script>
+</div>
+
+{% endblock content %}

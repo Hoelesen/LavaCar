@@ -1,495 +1,174 @@
-{% extends 'base.html' %}
-{% block title %}Home{% endblock title %}
-{% block nav-style %}mkt-nav{% endblock nav-style %}
-<link rel="stylesheet" type="text/css" href="../../CSS/table.css" media="screen" />
+{% extends 'base.html' %} {% block title %}Home{% endblock title %} 
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="../../CSS/table.css"
+  media="screen"
+/>
 {% block content %}
 
 <div class="mt-1 container bg-Light">
-    <div class="row mt-3">
-        <div class="col-lg-12">
-            <h2>Seja bem-vindo</h2>
-            <p>Este é o portal de serviço, um portal onde você pode acessar os recursos disponíveis</p>
-        </div>
-    </div>    
-    <hr>
-    <div class="row">
-        <div class="col-md-5 col-sm-12">
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <a class="text-decoration-none" href="/teste">
-                        <div class="card">
-                            <div style="height: 150px;" class="card-body d-flex align-items-center flex-column">
-                                <i class="fas fa-plus text-primary fa-4x mb-3"></i>
-                                <h6 class="text-center">NOVO SERVIÇO</h6>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <a class="text-decoration-none" href="/teste">
-                        <div class="card">
-                            <div style="height: 150px;" class="card-body d-flex align-items-center flex-column">
-                                <i class="fas fa-search text-primary fa-4x mb-3"></i>
-                                <h6 class="text-center">SERVIÇOS EM ANDAMENTO</h6>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <a class="text-decoration-none" href="/teste">
-                        <div class="card">
-                            <div style="height: 150px;" class="card-body d-flex align-items-center flex-column">
-                                <i class="fas fa-sign-in-alt text-primary fa-4x mb-3"></i>
-                                <h6 class="text-center">ENTRADAS E SAÍDAS DIÁRIAS</h6>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <a class="text-decoration-none" href="/teste">
-                        <div class="card">
-                            <div style="height: 150px;" class="card-body d-flex align-items-center flex-column">
-                                <i class="fas fa-business-time text-primary fa-4x mb-3"></i>
-                                <h6 class="text-center">AGENDAMENTOS A RECEBER</h6>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <a class="text-decoration-none" href="/teste">
-                        <div class="card">
-                            <div style="height: 150px;" class="card-body d-flex align-items-center flex-column">
-                                <i class="fas fa-chart-line text-primary fa-4x mb-3"></i>
-                                <h6 class="text-center">RELATÓRIOS</h6>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <a class="text-decoration-none" href="/teste">
-                        <div class="card">
-                            <div style="height: 150px;" class="card-body d-flex align-items-center flex-column">
-                                <i class="fas fa-file-alt text-primary fa-4x mb-3"></i>
-                                <h6 class="text-center">CADASTROS</h6>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-7 col-sm-12 mb-5 table-wrapper-scroll-y my-custom-scrollbar">
-            <div class="card">
-                <div class="card-body">
-                    <button type="button" class="btn btn-primary">Busca/Entrega</button>
-                    <div class="table-responsive">
-                        <table class="table table-striped table-hover table-responsive-sm">
-                            <thead>
-                                <tr>
-                                    <th class="text-center">ID</th>
-                                    <th>Nome</th>
-                                    <th>Veículo</th>
-                                    <th class="text-center">Hr. busca</th>
-                                    <th class="text-center">Hr. entrega</th>
-                                    <th class="text-center">Busca</th>
-                                    <th class="text-center">Entrega</th>
-                                </tr>
-                            </thead>
-                            <tbody class="overflow-auto">
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>José</td>
-                                    <td>Gol G5</td>
-                                    <td class="text-center">08:05</td>
-                                    <td class="text-center">10:25</td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                    <td class="text-center"> <input class="form-check-input" type="checkbox" value=""></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                </div>
-            </div>
-        </div>
+  <div class="row mt-3">
+    <div class="col-lg-12">
+      <h2>Seja bem vindo</h2>
+      <p>
+        Este é o portal de serviço, um portal onde você pode acessar os recursos
+        disponíveis
+      </p>
     </div>
-</div>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="col-md-5 col-sm-12">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <a class="text-decoration-none" href="/#">
+            <div class="card">
+              <div
+                style="height: 150px"
+                class="card-body d-flex align-items-center flex-column"
+              >
+                <i class="fas fa-plus text-primary fa-4x mb-3"></i>
+                <h6 class="text-center">NOVO SERVIÇO</h6>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6 mb-3">
+          <a class="text-decoration-none" href="{% url 'servico_list' %}?andamento=true">
+            <div class="card">
+              <div
+                style="height: 150px"
+                class="card-body d-flex align-items-center flex-column"
+              >
+                <i class="fas fa-search text-primary fa-4x mb-3"></i>
+                <h6 class="text-center">SERVIÇOS EM ANDAMENTO</h6>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6 mb-3">
+          <a class="text-decoration-none" href="/#">
+            <div class="card">
+              <div
+                style="height: 150px"
+                class="card-body d-flex align-items-center flex-column"
+              >
+                <i class="fas fa-sign-in-alt text-primary fa-4x mb-3"></i>
+                <h6 class="text-center">ENTRADAS E SAÍDAS DIÁRIAS</h6>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6 mb-3">
+          <a class="text-decoration-none" href="/#">
+            <div class="card">
+              <div
+                style="height: 150px"
+                class="card-body d-flex align-items-center flex-column"
+              >
+                <i class="fas fa-business-time text-primary fa-4x mb-3"></i>
+                <h6 class="text-center">AGENDAMENTOS A RECEBER</h6>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6 mb-3">
+          <a class="text-decoration-none" href="/#">
+            <div class="card">
+              <div
+                style="height: 150px"
+                class="card-body d-flex align-items-center flex-column"
+              >
+                <i class="fas fa-chart-line text-primary fa-4x mb-3"></i>
+                <h6 class="text-center">RELATÓRIOS</h6>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6 mb-3">
+          <a class="text-decoration-none" href="/#">
+            <div class="card">
+              <div
+                style="height: 150px"
+                class="card-body d-flex align-items-center flex-column"
+              >
+                <i class="fas fa-file-alt text-primary fa-4x mb-3"></i>
+                <h6 class="text-center">CADASTROS</h6>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      class="col-md-7 col-sm-12 mb-5 table-wrapper-scroll-y my-custom-scrollbar"
+    >
+      <div class="card">
+        <div class="card-body">
+          <!-- <button type="button" class="btn btn-primary">Busca/Entrega</button> -->
+          <!--Botão Search -->
+          <div class="row mt-3">
+            <div class="col-md- mx-auto">
+              <div class="small fw-light">Digite sua busca</div>
+              <div class="input-group">
+                <input
+                  class="form-control border rounded-pill"
+                  type="search"
+                  value="search"
+                  id="example-search-input"
+                />
+              </div>
+            </div>
+            <!--Botão Search -->
 
-{% endblock content %}
+            <div class="table-responsive">
+              <table
+                class="table table-striped table-hover table-responsive-sm"
+              >
+                <thead>
+                  <tr>
+                    <th class="text-center">ID</th>
+                    <th>Nome</th>
+                    <th>Veículo</th>
+                    <th class="text-center">Hr. busca</th>
+                    <th class="text-center">Hr. entrega</th>
+                    <th class="text-center">Busca</th>
+                    <th class="text-center">Entrega</th>
+                  </tr>
+                </thead>
+                <tbody class="overflow-auto">
+                  {% for data in servicos %}
+                  <tr>
+                    <td class="text-center">{{data.id}}</td>
+                    <td>{{data.veiculo.cliente}}</td>
+                    <td>{{data.veiculo}}</td>
+                    <td class="text-center">{{data.data_entrada|date:'d/m  H:i'}}</td>
+                    <td class="text-center">{{data.data_saida|date:'d/m  H:i'}}</td>
+                    <td class="text-center">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                      />
+                    </td>
+                    <td class="text-center">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                      />
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endblock content %}
+</div>

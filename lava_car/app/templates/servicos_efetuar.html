@@ -1,0 +1,220 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock title %}
+{% block nav-style %}mkt-nav{% endblock nav-style %}
+<link rel="stylesheet" type="text/css" href="../../CSS/table.css" media="screen" />
+{% block content %}
+
+<div class="mt-1 container bg-Light">
+    <div class="row mt-3">
+        <div class="col-lg-12">
+            <div>
+                <h2>Serviços em andamento</h2>
+            </div>
+            <div class="d-flex justify-content-center flex-column">
+                <p>Status de todos os serviços com entrada na empresa.s</p>
+            </div>
+
+
+
+        </div>
+        <!-- <a href="" class="d-flex flex-row text-center">
+            <p>teste</p>
+            <i class=" fas fa-circle" ></i>
+        </a> -->
+
+        <div class=" mt-xl-n5 d-flex flex-row justify-content-end">
+            <p class=""><i class="fa fa-circle fa-fw text-success" aria-hidden="true"></i> Finalizado </p>
+            <p class=""><i class="fa fa-circle fa-fw text-info" aria-hidden="true"></i> Andamento</p>
+            <p class=""><i class="fa fa-circle fa-fw text-warning" aria-hidden="true"></i> Serviços pendentes</p>
+            <p class=""><i class="fa fa-circle fa-fw text-danger" aria-hidden="true"></i> aguardando Inicio.</p>
+        </div>
+        <!-- <select id="status" name="status">
+            <option>status</option>
+            <option value="Finalizado">Finalizado</option>
+            <option value="Andamento">Andamento</option>
+            <option value="Serviços pendentes">Serviços pendentes</option>
+            <option value="aguardando Inicio">aguardando Inicio</option>
+            
+        </select> -->
+
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 mb-5 table-wrapper-scroll-y my-custom-scrollbar">
+            <div class="card">
+                <div class="card-body">
+                    <button type="button" class="btn btn-primary">Busca/Entrega</button>
+
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover table-responsive-sm">
+
+                    </div>
+                    <thead>
+                        <tr>
+                            <th class="text-center">ID</th>
+                            <th>Nome</th>
+                            <th>Veículo</th>
+                            <th class="text-center">Hr. entrada</th>
+                            <th class="text-center">Tempo estimado</th>
+                            <th class="text-center">Editar</th>
+                            <th class="text-center">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="overflow-auto">
+                        <tr>
+                            <td class="text-center">1</td>
+                            <td>José</td>
+                            <td>Gol G5</td>
+                            <td class="text-center">08:05</td>
+                            <td class="text-center">10:25</td>
+                            <td class="text-center">
+                                <!-- modal Editar -->
+                                <a href="#" onclick="editar()">
+
+                                    <button type="button" class="text-primary fas fa-edit" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal">
+
+                                    </button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Status do Serviço
+                                                    </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <!--######################### MODAL ###############################-->
+                                                <div class="modal-body">
+
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="exampleRadios" id="exampleRadios1" value="option1">
+                                                        <label class="form-check-label" for="exampleRadios1">
+                                                            <p class=""><i class="fa fa-circle fa-fw text-success"
+                                                                    aria-hidden="true"></i> Finalizado </p>
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="exampleRadios" id="exampleRadios2" value="option2">
+                                                        <label class="form-check-label" for="exampleRadios2">
+                                                            <p class=""><i class="fa fa-circle fa-fw text-info"
+                                                                    aria-hidden="true"></i> Andamento</p>
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="exampleRadios" id="exampleRadios3" value="option3">
+                                                        <label class="form-check-label" for="exampleRadios3">
+                                                            <p class=""><i class="fa fa-circle fa-fw text-warning"
+                                                                    aria-hidden="true"></i> Serviços pendentes</p>
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="exampleRadios" id="exampleRadios3" value="option3">
+                                                        <label class="form-check-label" for="exampleRadios3">
+                                                            <p class=""><i class="fa fa-circle fa-fw text-danger"
+                                                                    aria-hidden="true"></i> aguardando Inicio.</p>
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                <!--######################### MODAL ###############################-->
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </a>
+                            </td>
+                            <!-- MOdal 2-->
+                            <td class="text-center">
+
+                                <a href="#" onclick="editar()">
+
+                                    <button type="button" class="text-primary fas fa-check-circle"
+                                        data-bs-toggle="modal" data-bs-target="#modal2">
+
+                                    </button>
+
+                                    <div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="modal2"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="modal2">Status do Serviço
+                                                    </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+
+                                                <div class="modal-body d-flex flex-column justify-content-end">
+
+
+
+                                                    <div class="form-check">
+                                                        <input type="radio" class="btn-check" name="options-outlined"
+                                                            id="success-outlined" autocomplete="off" >
+                                                        <label class="btn btn-outline-success"
+                                                            for="success-outlined">Finalizado </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input type="radio" class="btn-check" name="options-outlined"
+                                                            id="success-outlined" autocomplete="off" >
+                                                        <label class="btn btn-outline-info"
+                                                            for="info-outlined">Andamento</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input type="radio" class="btn-check" name="options-outlined"
+                                                            id="success-outlined" autocomplete="off" >
+                                                        <label class="btn btn-outline-warning"
+                                                            for="warning-outlined">Serviços pendentes</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input type="radio" class="btn-check" name="options-outlined"
+                                                            id="success-outlined" autocomplete="off" >
+                                                        <label class="btn btn-outline-danger"
+                                                            for="success-danger">aguardando Inicio</label>
+                                                    </div>
+
+
+                                                </div>
+
+
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </a>
+                            </td>
+                        </tr>
+
+
+
+
+
+
+                    </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock content %}
