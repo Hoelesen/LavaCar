@@ -29,6 +29,45 @@ def login(request):
 
 
 # SERVIÇOS
+def financeiro_list(request):
+    # dictionary for initial data with
+    # field names as keys
+    context = {}
+
+    status = request.GET.get("status")
+    data_inicial_request = request.GET.get("dataInicial")
+    data_final_request = request.GET.get("dataFinal")
+
+    # add the dictionary during initialization
+    queryset = Servico.objects.all()
+
+
+    if (data_inicial_request is not None and data_inicial_request != '') and (data_final_request is not None and data_final_request != ''):
+        data_inicial = datetime.strptime(data_inicial_request, '%Y-%m-%d')
+        data_final = datetime.strptime(data_final_request, '%Y-%m-%d')
+
+        queryset = queryset.filter(data_entrada__gte=data_inicial).filter(data_entrada__lte=data_final)
+
+    final_list = list(queryset)
+
+    if status != None and status != '':
+        if(status == 'pago'):
+            ids = [service.pk for service in final_list if service.get_valor_restante() == 0]
+            final_list = list(queryset.filter(id__in=ids))
+        else:
+            ids = [service.pk for service in final_list if service.get_valor_restante() > 0]
+            final_list = list(queryset.filter(id__in=ids))
+
+    context["dataset"] = final_list
+    context["status_list"] = ServicoStatus.choices()    
+
+    context["status"] = status    
+    context["data_inicial"] = data_inicial_request    
+    context["data_final"] = data_final_request    
+
+    return render(request, "financeiro_list.html", context)
+
+# SERVIÇOS
 def servico_list(request):
     # dictionary for initial data with
     # field names as keys

@@ -112,6 +112,8 @@ class Servico(models.Model):
     pago = models.BooleanField(verbose_name="Pago", default=False)
     desconto = models.DecimalField(
         decimal_places=2, max_digits=4, verbose_name="Desconto", default=0)
+    acrescimo = models.DecimalField(
+        decimal_places=2, max_digits=4, verbose_name="Acréscimo", default=0)
 
 
     def get_status_label(self):
@@ -138,7 +140,7 @@ class Servico(models.Model):
 
     def get_total_itens_com_desconto(self):
         itens_total = self.get_total_itens()
-        return round(itens_total * (1 - (self.desconto / 100)), 2)
+        return round(itens_total * (1 - ((self.desconto - self.acrescimo) / 100)), 2)
 
     def get_valor_restante(self):
         total_itens = self.get_total_itens_com_desconto()

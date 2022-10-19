@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+{% block title %}veículos - Listar{% endblock title %}
+{% block nav-style %}mkt-nav{% endblock nav-style %}
+{% block content %}
+<div class="main">
+
+    <div class="container my-3">
+        <div class="row">
+            <div class="col d-flex justify-content-start">
+                <h2>Financeiro</h2>
+            </div>
+        </div>
+        <form method="get">
+            <div class="row">
+                <div class="col-lg-3 col-sm-12 form-group">
+                    <label for="status">Status</label>
+                    <select class="form-control" name="status" id="status">
+                        <option value="">Todos</option>
+                        <option value="pendente">Pendente</option>
+                        <option value="pago">Pago</option>                        
+                    </select>
+                </div>
+                <div class="col-lg-2 col-sm-12 form-group">
+                    <label for="dataInicial">Data inicial</label>
+                    <input type="date" name="dataInicial" class="form-control" value="{{data_inicial}}">
+                </div>
+                <div class="col-lg-2 col-sm-12 form-group">
+                    <label for="dataFinal">Data final</label>
+                    <input type="date" name="dataFinal" class="form-control" value="{{data_final}}">
+                </div>
+                <div class="col-lg-2 col-sm-12 d-flex align-self-end">
+                    <button class="btn btn-success" type="submit">Filtrar</button>
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col">
+                <table class="table table-striped table-bordered table-responsive my-3">
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Cliente</th>
+                            <th>Veículo</th>
+                            <th>Entrada</th>
+                            <th>Saída</th>
+                            <th>N° nota</th>
+                            <th>Status</th>
+                            <th>Valor pendente</th>
+                            <th>Valor acertado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for data in dataset %}
+                        <tr class="{% if data.get_valor_restante > 0 %}table-warning{% else %}table-success{% endif %}">
+                            <td>{{ data.id }}</td>
+                            <td>{{ data.veiculo.cliente }}</td>
+                            <td>{{ data.veiculo }}</td>
+                            <td>{{ data.data_entrada }}</td>
+                            <td>{{ data.data_saida }}</td>
+                            <td>{{ data.numero_nota }}</td>
+                            {% if data.get_valor_restante > 0 %}
+                            <td>Pendente</td>
+                            {% else %}
+                            <td>Pago</td>
+                            {% endif %}
+                            <td>R$ {{ data.get_valor_restante }}</td>
+                            <td>R$ {{ data.get_total_acertado }}</td>
+                            <!-- <td>
+                                <div class="d-flex justify-content-center">
+                                    <a type="button" style="margin-right: 12px;" href="#" data-bs-toggle="modal" data-bs-target="#modal-{{data.id}}">
+                                        <i class="fas fa-info"></i>
+                                    </button>
+                                    <a style="margin-right: 12px;" href={% url 'servico_edit' id=data.id %}>
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </a>
+                                    <a style="margin-right: 12px;" href={% url 'acerto_create' servico_id=data.id %}>
+                                        <i class="fas fa-money-bill text-success"></i>
+                                    </a>
+                                    <a href={% url 'servico_delete' id=data.id %}>
+                                        <i class="fas fa-trash text-danger"></i>
+                                    </a>
+                                </div>
+                            </td> -->
+                            <div class="modal fade" id="modal-{{data.id}}" tabindex="-1" role="dialog"
+                                aria-labelledby="modal-label-{{data.id}}" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header d-flex justify-content-evenly">
+                                            <h5 class="modal-title" id="modal-label-{{data.id}}">Total:
+                                                R${{data.get_total_itens_com_desconto}}</h5>
+                                            <h5 class="modal-title" id="modal-label-{{data.id}}">Já acertado:
+                                                R${{data.get_total_acertado}}</h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            <ul class="list-group">
+                                                {% for item in data.acerto_set.all %}
+                                                <li class="list-group-item">
+                                                    {{item.funcionario}}<br>
+                                                    Valor: R$ {{item.valor}}<br>
+                                                    Comissão: R${{item.valor_comissao}}<br>
+                                                    Obs: {{item.observacao}} <br>
+                                                    Forma de pagamento: {{item.get_forma_pagamento_label}}
+                                                </li>
+                                                {%endfor%}
+                                                <li class="list-group-item">
+                                                    <strong>Falta a acertar: R${{data.get_valor_restante}}</strong>
+                                                </li>
+                                            </ul>
+                                            <!-- <table class="table table-responsive table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Valor(R$)</th>
+                                                    <th>Comissão(R$)</th>
+                                                    <th>Func.</th>
+                                                    <th>Obs.</th>
+                                                    <th>Forma de pagamento</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for item in data.acerto_set.all %}
+                                                    <tr>
+                                                        <td>{{item.valor}}</td>
+                                                        <td>{{item.valor_comissao}}</td>
+                                                        <td>{{item.funcionario}}</td>
+                                                        <td>{{item.observacao}}</td>
+                                                        <td>{{item.get_forma_pagamento_label}}</td>
+                                                    </tr>
+                                                {%endfor%}
+                                            </tbody>
+                                        </table> -->
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}
