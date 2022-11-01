@@ -66,5 +66,6 @@ class AcertoForm(forms.ModelForm):
     servico = forms.ModelChoiceField(queryset=Servico.objects.all(), to_field_name="id", empty_label="Selecione", widget=forms.HiddenInput())
     funcionario = forms.ModelChoiceField(queryset=Funcionario.objects.all(), to_field_name="id", empty_label="Selecione")
     observacao = forms.Textarea()
+    valor = forms.DecimalField(min_value=0, decimal_places=2)
   
     

@@ -164,6 +164,7 @@ def acerto_create(request, servico_id):
     acertos_ja_feitos = Acerto.objects.filter(servico_id = servico_id)
     context["valor_total"] = servico_existente.get_total_itens_com_desconto()
     context["valor_ja_acertado"] = servico_existente.get_total_acertado()
+    context["servico_id"] = servico_id
 
     obj = Acerto()
 
@@ -183,8 +184,15 @@ def acerto_create(request, servico_id):
     # add form dictionary to context
     context["form"] = form
     
-
     return render(request, "acerto_create.html", context)
+
+def acerto_reset(request, servico_id):
+    # fetch the object related to passed id
+    acertos_ja_feitos = Acerto.objects.filter(servico_id = servico_id)
+
+    acertos_ja_feitos.delete()
+    
+    return HttpResponseRedirect(f"/servicos/{servico_id}/acertos/create")
 
 # CLIENTES
 def cliente_list(request):
