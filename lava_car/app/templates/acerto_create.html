@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Acerto - {{ servico.id }} - criar{% endblock title %}
+{% block title %}Acerto - {{ servico_id }} - criar{% endblock title %}
 {% block nav-style %}mkt-nav{% endblock nav-style %}
 {% block content %}
 
@@ -18,7 +18,12 @@
                         </div>
                         <div class="card">
                             <div class="card-body">
-                                <h5>Valor já acertado: R${{valor_ja_acertado}}</h5>
+                                <div class="d-flex justify-content-between">
+                                    <h5>Valor já acertado: R${{valor_ja_acertado}}</h5>
+                                    <a href={% url 'acerto_reset' servico_id=servico_id %} class="btn btn-warning">
+                                        <i class="fas fa-sync"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -28,10 +33,9 @@
                         <!-- Using the formset -->
                         {% bootstrap_form form %}
                         <div class="d-flex justify-content-end">
-                            <a href={% url 'servico_list' %}  class="btn btn-secondary">Voltar</a>
+                            <a href={% url 'servico_list' %} class="btn btn-secondary">Voltar</a>
                             <button style="margin-left: 9px;" type="submit" class="btn btn-success">Salvar</button>
                         </div>
-                        
                     </form>
                 </div>
             </div>

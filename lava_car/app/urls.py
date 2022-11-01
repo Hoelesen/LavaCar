@@ -32,5 +32,6 @@ urlpatterns = [
     #  Financeiro
     path('financeiro/', views.financeiro_list, name='financeiro_list'),
     # Acertos
-    path('servicos/<servico_id>/acertos/create/', views.acerto_create, name='acerto_create')
+    path('servicos/<servico_id>/acertos/create/', views.acerto_create, name='acerto_create'),
+    path('servicos/<servico_id>/acertos/reset/', views.acerto_reset, name='acerto_reset')
 ]
