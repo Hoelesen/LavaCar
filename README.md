@@ -30,3 +30,5 @@ Projeto desenvolvido como trabalho de conclusão do curso de Análise e Desenvol
 ### **Passo 8:** Crie um usuário da aplicação
 * Navegue até **http://127.0.0.1:8000/admin** e faça login com o superuser criado
 * Com isso todos os cadastros referentes a autenticação estarão disponíveis
+
+Para informações de como utilizar após a implantação esse repositório possui uma página wiki.
