@@ -64,12 +64,22 @@ class Cliente(models.Model):
 
 
 class Veiculo(models.Model):
-    tipo_veiculo = models.IntegerField(
-        choices=TipoVeiculo.choices(), default=TipoVeiculo.CARRO, verbose_name="Tipo")
+    tipo_veiculo = models.IntegerField(choices=TipoVeiculo.choices(), default=TipoVeiculo.CARRO, verbose_name="Tipo")
     placa = models.CharField(max_length=7)
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-    descricao = models.CharField(
-        max_length=50, verbose_name="Descrição", blank=True, default='')
+    descricao = models.CharField(max_length=50, verbose_name="Descrição", blank=True, default='')
+    
+    def get_tipo_veiculo_label(self):
+        if self.tipo_veiculo == TipoVeiculo.CARRO:
+            return "Carro"
+        if self.tipo_veiculo == TipoVeiculo.CAMINHONETE:
+            return "Caminhonete"
+        if self.tipo_veiculo == TipoVeiculo.CAMINHAO:
+            return "Caminhão"
+        if self.tipo_veiculo == TipoVeiculo.MOTO:
+            return "Moto"
+        if self.tipo_veiculo == TipoVeiculo.ONIBUS:
+            return "Ônibus"
 
     def __str__(self) -> str:
         return self.placa
@@ -87,9 +97,20 @@ class TipoServico(models.Model):
     nome = models.CharField(max_length=60)
     descricao = models.CharField(
         max_length=60, verbose_name="Descrição", blank=True, default='')
-    valor = models.DecimalField(decimal_places=2, max_digits=4)
-    tipo_veiculo = models.IntegerField(
-        choices=TipoVeiculo.choices(), default=TipoVeiculo.CARRO, verbose_name="Tipo")
+    valor = models.DecimalField(decimal_places=2, max_digits=999)
+    tipo_veiculo = models.IntegerField(choices=TipoVeiculo.choices(), default=TipoVeiculo.CARRO, verbose_name="Tipo")
+    
+    def get_tipo_veiculo_label(self):
+        if self.tipo_veiculo == TipoVeiculo.CARRO:
+            return "Carro"
+        if self.tipo_veiculo == TipoVeiculo.CAMINHONETE:
+            return "Caminhonete"
+        if self.tipo_veiculo == TipoVeiculo.CAMINHAO:
+            return "Caminhão"
+        if self.tipo_veiculo == TipoVeiculo.MOTO:
+            return "Moto"
+        if self.tipo_veiculo == TipoVeiculo.ONIBUS:
+            return "Ônibus"
 
     def __str__(self) -> str:
         return self.nome + ' - ' + str(self.valor)
@@ -109,7 +130,6 @@ class Servico(models.Model):
     observacao = models.CharField(
         max_length=60, verbose_name="Observação", blank=True, default='')
     itens = models.ManyToManyField(TipoServico, db_column="")
-    pago = models.BooleanField(verbose_name="Pago", default=False)
     desconto = models.DecimalField(
         decimal_places=2, max_digits=4, verbose_name="Desconto", default=0)
     acrescimo = models.DecimalField(

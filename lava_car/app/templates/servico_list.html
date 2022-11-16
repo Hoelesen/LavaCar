@@ -60,8 +60,8 @@
                             <td>{{ data.id }}</td>
                             <td>{{ data.veiculo.cliente }}</td>
                             <td>{{ data.veiculo }}</td>
-                            <td>{{ data.data_entrada }}</td>
-                            <td>{{ data.data_saida }}</td>
+                            <td>{{ data.data_entrada|date:'d/m/Y  H:i' }}</td>
+                            <td>{{ data.data_saida|date:'d/m/Y  H:i' }}</td>
                             <td>{{ data.numero_nota }}</td>
                             <td>{{ data.get_status_label }}</td>
                             <td>

@@ -41,12 +41,19 @@ def financeiro_list(request):
     # add the dictionary during initialization
     queryset = Servico.objects.all()
 
-
-    if (data_inicial_request is not None and data_inicial_request != '') and (data_final_request is not None and data_final_request != ''):
+    if (data_inicial_request is not None and data_inicial_request != ''):
         data_inicial = datetime.strptime(data_inicial_request, '%Y-%m-%d')
+
+        data_inicial = data_inicial.replace(hour=0, minute=0)
+
+        queryset = queryset.filter(data_entrada__gte=data_inicial)
+
+    if (data_final_request is not None and data_final_request != ''):
         data_final = datetime.strptime(data_final_request, '%Y-%m-%d')
 
-        queryset = queryset.filter(data_entrada__gte=data_inicial).filter(data_entrada__lte=data_final)
+        data_final = data_final.replace(hour=23, minute=59)
+
+        queryset = queryset.filter(data_entrada__lte=data_final)
 
     final_list = list(queryset)
 
@@ -90,11 +97,20 @@ def servico_list(request):
             
     if status != None and status != '':
         queryset = queryset.filter(status=status)
-    if (data_inicial_request is not None and data_inicial_request != '') and (data_final_request is not None and data_final_request != ''):
+    
+    if (data_inicial_request is not None and data_inicial_request != ''):
         data_inicial = datetime.strptime(data_inicial_request, '%Y-%m-%d')
+
+        data_inicial = data_inicial.replace(hour=0, minute=0)
+
+        queryset = queryset.filter(data_entrada__gte=data_inicial)
+
+    if (data_final_request is not None and data_final_request != ''):
         data_final = datetime.strptime(data_final_request, '%Y-%m-%d')
 
-        queryset = queryset.filter(data_entrada__gt=data_inicial).filter(data_entrada__lt=data_final)
+        data_final = data_final.replace(hour=23, minute=59)
+
+        queryset = queryset.filter(data_entrada__lte=data_final)
 
     context["dataset"] = list(queryset)
     context["status_list"] = ServicoStatus.choices()    

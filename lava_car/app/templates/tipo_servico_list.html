@@ -29,7 +29,7 @@
                         <tr>
                             <td>{{ data.nome }}</td>
                             <td>{{ data.valor }}</td>
-                            <td>{{ data.tipo_veiculo }}</td>
+                            <td>{{ data.get_tipo_veiculo_label }}</td>
                             <td>
                                 <div class="d-flex justify-content-center">
                                     <a style="margin-right: 12px;" href={% url 'tipo_servico_edit' id=data.id %}><i

@@ -133,8 +133,6 @@
                     <th>Veículo</th>
                     <th class="text-center">Hr. busca</th>
                     <th class="text-center">Hr. entrega</th>
-                    <th class="text-center">Busca</th>
-                    <th class="text-center">Entrega</th>
                   </tr>
                 </thead>
                 <tbody class="overflow-auto">
@@ -143,22 +141,8 @@
                     <td class="text-center">{{data.id}}</td>
                     <td>{{data.veiculo.cliente}}</td>
                     <td>{{data.veiculo}}</td>
-                    <td class="text-center">{{data.data_entrada|date:'d/m  H:i'}}</td>
-                    <td class="text-center">{{data.data_saida|date:'d/m  H:i'}}</td>
-                    <td class="text-center">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        value=""
-                      />
-                    </td>
-                    <td class="text-center">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        value=""
-                      />
-                    </td>
+                    <td class="text-center">{{data.data_entrada|date:'d/m/Y  H:i'}}</td>
+                    <td class="text-center">{{data.data_saida|date:'d/m/Y  H:i'}}</td>
                   </tr>
                   {% endfor %}
                 </tbody>
